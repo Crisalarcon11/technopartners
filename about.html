@@ -9,24 +9,31 @@
 </head>
 <body>
   <header class="topbar">
-    <div class="container navbar">
-      <a class="brand" href="index.html">
-        <img src="assets/logo.png" alt="Logo TechnoPartners" />
-        <div class="brand-text"><strong>TechnoPartners</strong><span>IT Services &amp; Solutions</span></div>
-      </a>
+  <div class="container navbar">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png" alt="Logo TechnoPartners">
+      <div class="brand-text">
+        <strong>TECHNOPARTNERS</strong>
+        <span>IT SERVICES &amp; SOLUTIONS</span>
+      </div>
+    </a>
 
-      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-      
-      <nav id="menu" class="nav-links">
-        <a href="index.html">Inicio</a>
-        <a class="active" href="about.html">Nosotros</a>
-        <a href="services.html">Servicios</a>
-        <a href="projects.html">Proyectos</a>
-        
-      </nav>
-      <a class="nav-cta" href="contact.html">Solicitar reunión</a>
-    </div>
-  </header>
+    <nav id="menu" class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="about.html">Nosotros</a>
+      <a href="services.html">Servicios</a>
+      <a href="projects.html">Proyectos</a>
+     
+      <a class="nav-mobile-cta" href="contact.html">Solicitar reunión</a>
+    </nav>
+
+    <button class="menu-toggle" type="button" onclick="toggleMenu()" aria-label="Abrir menú">
+      ☰
+    </button>
+
+    <a class="nav-cta" href="contact.html">Solicitar reunión</a>
+  </div>
+</header>
 
   <main>
     <section class="page-hero">
