@@ -16,17 +16,21 @@
   --success: #25d366;
   --warning: #f3b63f;
   --shadow: 0 18px 60px rgba(18, 46, 84, 0.10);
+  --shadow-soft: 0 10px 30px rgba(18, 46, 84, 0.08);
   --radius: 24px;
   --radius-sm: 16px;
   --max: 1180px;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -39,6 +43,7 @@ body {
     linear-gradient(180deg, #f6f8fc 0%, #eef3f8 38%, #f8fbff 100%);
   background-size: 40px 40px, 40px 40px, auto;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 body::before {
@@ -66,7 +71,10 @@ a {
   text-decoration: none;
 }
 
-img {
+img,
+svg,
+video,
+canvas {
   max-width: 100%;
   display: block;
 }
@@ -76,6 +84,11 @@ input,
 textarea,
 select {
   font: inherit;
+}
+
+button {
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .container {
@@ -118,18 +131,21 @@ select {
   width: 42px;
   height: 42px;
   object-fit: contain;
+  flex: 0 0 auto;
 }
 
 .brand-text {
   display: flex;
   flex-direction: column;
   line-height: 1.1;
+  min-width: 0;
 }
 
 .brand-text strong {
   font-size: 1.1rem;
   color: #ffffff;
   letter-spacing: 0.04em;
+  white-space: nowrap;
 }
 
 .brand-text span {
@@ -137,12 +153,14 @@ select {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: rgba(220, 232, 255, 0.78);
+  white-space: nowrap;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex: 0 1 auto;
 }
 
 .nav-links a {
@@ -150,6 +168,7 @@ select {
   padding: 12px 16px;
   border-radius: 999px;
   transition: 0.24s ease;
+  white-space: nowrap;
 }
 
 .nav-links a:hover,
@@ -169,6 +188,12 @@ select {
   background: rgba(255, 255, 255, 0.06);
   color: #fff;
   cursor: pointer;
+  flex: 0 0 auto;
+  line-height: 1;
+}
+
+.menu-toggle:hover {
+  background: rgba(255, 255, 255, 0.10);
 }
 
 .nav-mobile-cta {
@@ -192,6 +217,7 @@ select {
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
+  text-align: center;
 }
 
 .btn:hover {
@@ -650,6 +676,25 @@ footer {
 }
 
 /* =========================
+   LARGE TABLET / SMALL DESKTOP
+========================= */
+
+@media (max-width: 1200px) {
+  .topbar .nav-cta {
+    padding: 0 22px;
+    font-size: 0.92rem;
+  }
+
+  .brand-text strong {
+    font-size: 1rem;
+  }
+
+  .brand-text span {
+    font-size: 0.66rem;
+  }
+}
+
+/* =========================
    TABLET
 ========================= */
 
@@ -672,6 +717,18 @@ footer {
     width: 100%;
     font-size: clamp(1.3rem, 2.8vw, 2.2rem);
   }
+
+  .navbar {
+    gap: 14px;
+  }
+
+  .nav-links {
+    gap: 4px;
+  }
+
+  .nav-links a {
+    padding: 10px 12px;
+  }
 }
 
 /* =========================
@@ -693,7 +750,14 @@ footer {
     flex-wrap: nowrap;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 0;
+    padding: 12px 0;
+    gap: 10px;
+  }
+
+  .brand {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
   }
 
   .brand img {
@@ -701,17 +765,25 @@ footer {
     height: 34px;
   }
 
+  .brand-text {
+    min-width: 0;
+  }
+
   .brand-text strong {
     font-size: 0.95rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .brand-text span {
     font-size: 0.58rem;
     letter-spacing: 0.1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  .nav-cta {
-    display: none;
+  .topbar .nav-cta {
+    display: none !important;
   }
 
   .nav-links {
@@ -744,6 +816,7 @@ footer {
   .nav-mobile-cta {
     display: inline-flex;
     justify-content: center;
+    align-items: center;
     margin-top: 6px;
     min-height: 48px;
     padding: 0 16px;
@@ -752,6 +825,7 @@ footer {
     border: 1px solid rgba(79, 127, 168, 0.35);
     color: #f6fbff !important;
     font-weight: 600;
+    text-align: center;
   }
 
   .hero-grid,
@@ -850,5 +924,51 @@ footer {
 
   .section {
     padding: 14px 0 24px;
+  }
+}
+
+/* =========================
+   VERY SMALL DEVICES
+========================= */
+
+@media (max-width: 420px) {
+  .brand img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .brand-text strong {
+    font-size: 0.84rem;
+  }
+
+  .brand-text span {
+    font-size: 0.52rem;
+    letter-spacing: 0.06em;
+  }
+
+  .menu-toggle {
+    width: 42px;
+    height: 42px;
+  }
+
+  .hero h1,
+  .page-hero h1 {
+    font-size: clamp(1.15rem, 7vw, 1.7rem);
+  }
+
+  .hero .lead,
+  .page-hero p,
+  .section-header p,
+  .panel p,
+  .card p,
+  .service-card p,
+  .project-card p,
+  .hero-card p,
+  .contact-card p,
+  .form-note,
+  .band span,
+  li,
+  label {
+    font-size: 0.95rem;
   }
 }
