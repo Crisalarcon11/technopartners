@@ -13,7 +13,7 @@
   --brand-2: #2f6eb5;
   --navy: #0b1f3f;
   --accent: #66b8ff;
-  --success: #25D366;
+  --success: #25d366;
   --warning: #f3b63f;
   --shadow: 0 18px 60px rgba(18, 46, 84, 0.10);
   --radius: 24px;
@@ -44,7 +44,7 @@ body {
 body::before {
   content: "";
   position: fixed;
-  inset: 78px 0 0 0;
+  inset: 84px 0 0 0;
   background: url('assets/logosinfondotp.svg') center 170px / min(820px, 66vw) no-repeat;
   opacity: 0.18;
   filter: saturate(1.05);
@@ -93,12 +93,12 @@ select {
   z-index: 1000;
   background: rgba(11, 31, 63, 0.96);
   backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 12px 30px rgba(4, 14, 30, 0.18);
 }
 
 .navbar {
-  min-height: 78px;
+  min-height: 84px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -111,6 +111,7 @@ select {
   align-items: center;
   gap: 12px;
   min-width: 0;
+  flex: 0 1 auto;
 }
 
 .brand img {
@@ -154,7 +155,7 @@ select {
 .nav-links a:hover,
 .nav-links a.active {
   color: #fff;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .menu-toggle {
@@ -164,8 +165,8 @@ select {
   width: 46px;
   height: 46px;
   border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.14);
-  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
   color: #fff;
   cursor: pointer;
 }
@@ -189,6 +190,8 @@ select {
   border: 1px solid transparent;
   transition: 0.24s ease;
   cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .btn:hover {
@@ -202,12 +205,15 @@ select {
   border: 1px solid rgba(125, 170, 220, 0.32);
   box-shadow: 0 10px 24px rgba(20, 57, 109, 0.16);
 }
-.nav-cta {
+
+.topbar .nav-cta {
+  height: 48px;
   min-height: 48px;
-  padding: 0 26px;
+  padding: 0 28px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  align-self: center;
   text-align: center;
   line-height: 1;
   font-size: 0.95rem;
@@ -215,6 +221,11 @@ select {
   letter-spacing: 0.01em;
   border-radius: 999px;
   white-space: nowrap;
+  vertical-align: middle;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .btn-primary:hover,
@@ -225,13 +236,13 @@ select {
 }
 
 .btn-secondary {
-  background: rgba(255,255,255,0.65);
+  background: rgba(255, 255, 255, 0.65);
   color: var(--brand);
   border-color: rgba(34, 72, 118, 0.12);
 }
 
 .btn-secondary:hover {
-  background: rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .email-btn {
@@ -245,7 +256,7 @@ select {
 }
 
 .whatsapp-btn {
-  background: linear-gradient(135deg, #25D366, #16af52);
+  background: linear-gradient(135deg, #25d366, #16af52);
   color: #fff;
   border-color: rgba(14, 129, 58, 0.24);
 }
@@ -385,7 +396,7 @@ label {
 .logo-panel,
 .band,
 .media-card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.90), rgba(255,255,255,0.76));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.90), rgba(255, 255, 255, 0.76));
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -442,7 +453,7 @@ label {
 }
 
 .hero-stats {
-  grid-template-columns: repeat(2, minmax(0,1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: 18px;
 }
 
@@ -461,7 +472,7 @@ label {
   padding: 18px;
   border-radius: 18px;
   border: 1px solid var(--line);
-  background: rgba(255,255,255,0.55);
+  background: rgba(255, 255, 255, 0.55);
 }
 
 .mini-stat strong,
@@ -545,8 +556,8 @@ label {
 }
 
 .highlight {
-  background: linear-gradient(135deg, rgba(26,58,105,0.88), rgba(54,102,164,0.86));
-  border-color: rgba(255,255,255,0.10);
+  background: linear-gradient(135deg, rgba(26, 58, 105, 0.88), rgba(54, 102, 164, 0.86));
+  border-color: rgba(255, 255, 255, 0.10);
 }
 
 .highlight strong,
@@ -573,7 +584,7 @@ select,
 textarea {
   width: 100%;
   border: 1px solid rgba(26, 58, 105, 0.15);
-  background: rgba(255,255,255,0.8);
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 16px;
   padding: 15px 16px;
   color: var(--text);
@@ -669,15 +680,16 @@ footer {
 
 @media (max-width: 920px) {
   body::before {
-  background: url('assets/logosinfondotp.svg') center 140px / min(420px, 72vw) no-repeat;
-  opacity: 0.11;
-}
+    background: url('assets/logosinfondotp.svg') center 140px / min(420px, 72vw) no-repeat;
+    opacity: 0.11;
+  }
 
   .menu-toggle {
     display: inline-flex;
   }
 
   .navbar {
+    min-height: 78px;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: space-between;
