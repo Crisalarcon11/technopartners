@@ -9,31 +9,30 @@
 </head>
 <body>
   <header class="topbar">
-  <div class="container navbar">
-    <a class="brand" href="index.html">
-      <img src="assets/logo.png" alt="Logo TechnoPartners">
-      <div class="brand-text">
-        <strong>TECHNOPARTNERS</strong>
-        <span>IT SERVICES &amp; SOLUTIONS</span>
-      </div>
-    </a>
+    <div class="container navbar">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.png" alt="Logo TechnoPartners">
+        <div class="brand-text">
+          <strong>TECHNOPARTNERS</strong>
+          <span>IT SERVICES &amp; SOLUTIONS</span>
+        </div>
+      </a>
 
-    <nav id="menu" class="nav-links">
-      <a href="index.html">Inicio</a>
-      <a href="about.html">Nosotros</a>
-      <a href="services.html">Servicios</a>
-      <a href="projects.html">Proyectos</a>
-    
-      <a class="nav-mobile-cta" href="contact.html">Solicitar reunión</a>
-    </nav>
+      <nav id="menu" class="nav-links">
+        <a href="index.html">Inicio</a>
+        <a href="about.html">Nosotros</a>
+        <a href="services.html">Servicios</a>
+        <a href="projects.html">Proyectos</a>
+        <a class="nav-mobile-cta" href="contact.html">Solicitar reunión</a>
+      </nav>
 
-    <button class="menu-toggle" type="button" onclick="toggleMenu()" aria-label="Abrir menú">
-      ☰
-    </button>
+      <button class="menu-toggle" type="button" onclick="toggleMenu()" aria-label="Abrir menú">
+        ☰
+      </button>
 
-    <a class="nav-cta" href="contact.html">Solicitar reunión</a>
-  </div>
-</header>
+      <a class="nav-cta" href="contact.html">Solicitar reunión</a>
+    </div>
+  </header>
 
   <main>
     <section class="page-hero">
@@ -55,6 +54,7 @@
             <li><strong>Presencia comercial:</strong> Ecuador con experiencia atendiendo clientes Internacionales</li>
             <li><strong>Especialidades:</strong> Software, Power Automate, Bases de Datos, Personal TI y Liderazgo de proyectos</li>
           </ul>
+
           <div class="band" style="margin-top:18px;">
             <div>
               <strong>Respuesta ejecutiva</strong><br />
@@ -62,38 +62,65 @@
             </div>
           </div>
         </div>
+
         <div class="form-card">
           <div class="tag">Formulario</div>
           <h3>Enviar consulta</h3>
+
           <form id="contactForm">
-            <label>Nombre completo
-              <input id="name" type="text" required />
+            <label for="name">Nombre completo
+              <input id="name" name="from_name" type="text" required />
             </label>
-            <label>Empresa
-              <input id="company" type="text" required />
+
+            <label for="company">Empresa
+              <input id="company" name="company" type="text" required />
             </label>
-            <label>Email corporativo
-              <input id="email" type="email" required />
+
+            <label for="email">Email corporativo
+              <input id="email" name="from_email" type="email" required />
             </label>
-            <label>Servicio de interés
-              <select id="service" required>
+
+            <label for="service">Servicio de interés
+              <select id="service" name="service" required>
                 <option value="">Seleccione</option>
-                <option>Consultoría TI</option>
-                <option>Desarrollo de software</option>
-                <option>Outsourcing TI</option>
-                <option>Power Automate</option>
-                <option>Bases de datos</option>
-                <option>Liderazgo de proyectos con Scrum</option>
+                <option value="Consultoría TI">Consultoría TI</option>
+                <option value="Desarrollo de software">Desarrollo de software</option>
+                <option value="Outsourcing TI">Outsourcing TI</option>
+                <option value="Power Automate">Power Automate</option>
+                <option value="Bases de datos">Bases de datos</option>
+                <option value="Liderazgo de proyectos con Scrum">Liderazgo de proyectos con Scrum</option>
               </select>
             </label>
-            <label>Mensaje
-              <textarea id="message" required placeholder="Describa brevemente su proyecto u oportunidad"></textarea>
+
+            <label for="message">Mensaje
+              <textarea
+                id="message"
+                name="message"
+                required
+                placeholder="Describa brevemente su proyecto u oportunidad"
+              ></textarea>
             </label>
+
             <div class="btn-row">
-              <button class="btn btn-primary mail-btn" type="submit">Enviar por correo</button>
-              <a class="btn whatsapp-btn" href="https://wa.me/593987517110?text=Hola%20TechnoPartners%2C%20quisiera%20recibir%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank" rel="noopener"><span class="wa-icon">✆</span><span class="wa-text">Abrir WhatsApp<small>Respuesta comercial directa</small></span></a>
+              <button id="submitBtn" class="btn btn-primary mail-btn" type="submit">
+                Enviar por correo
+              </button>
+
+              <a
+                class="btn whatsapp-btn"
+                href="https://wa.me/593987517110?text=Hola%20TechnoPartners%2C%20quisiera%20recibir%20informaci%C3%B3n%20sobre%20sus%20servicios."
+                target="_blank"
+                rel="noopener"
+              >
+                <span class="wa-icon">✆</span>
+                <span class="wa-text">
+                  Abrir WhatsApp
+                  <small>Respuesta comercial directa</small>
+                </span>
+              </a>
             </div>
-            
+
+            <p id="formStatus" style="margin-top:14px;font-weight:600;"></p>
           </form>
         </div>
       </div>
@@ -106,6 +133,46 @@
       <div><a href="index.html">Inicio</a> · <a href="services.html">Servicios</a> · <a href="projects.html">Proyectos</a></div>
     </div>
   </footer>
+
   <script src="script.js"></script>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <script>
+    (function () {
+      emailjs.init({
+        publicKey: "Ns-VcpFQiulAu0WKq"
+      });
+    })();
+
+    const contactForm = document.getElementById("contactForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const formStatus = document.getElementById("formStatus");
+
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      formStatus.textContent = "";
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Enviando...";
+
+      emailjs.sendForm("service_wqgp69d", "template_nwgazu7", this)
+        .then(() => {
+          formStatus.textContent = "Mensaje enviado correctamente. Nos pondremos en contacto pronto.";
+          formStatus.style.color = "#16a34a";
+          contactForm.reset();
+        })
+        .catch((error) => {
+          console.error("Error EmailJS:", error);
+          formStatus.textContent = "Hubo un error al enviar el mensaje. Inténtelo nuevamente.";
+          formStatus.style.color = "#dc2626";
+        })
+        .finally(() => {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Enviar por correo";
+        });
+    });
+  </script>
 </body>
 </html>
