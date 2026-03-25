@@ -45,7 +45,7 @@ body::before {
   content: "";
   position: fixed;
   inset: 78px 0 0 0;
-  background: url('assets/logo.svg') center 155px / min(620px, 56vw) no-repeat;
+  background: url('assets/logosinfondotp.svg') center 170px / min(820px, 66vw) no-repeat;
   opacity: 0.18;
   filter: saturate(1.05);
   pointer-events: none;
@@ -197,15 +197,28 @@ select {
 
 .btn-primary,
 .nav-cta {
-  background: linear-gradient(135deg, #5d8fbb, #4b79a7);
-  color: #fff;
-  border-color: rgba(55, 94, 140, 0.34);
-  box-shadow: 0 12px 30px rgba(33, 74, 124, 0.18);
+  background: linear-gradient(135deg, #6ea3d4, #4f7ea8);
+  color: #ffffff;
+  border: 1px solid rgba(125, 170, 220, 0.32);
+  box-shadow: 0 10px 24px rgba(20, 57, 109, 0.16);
+}
+.nav-cta {
+  min-height: 46px;
+  padding: 0 24px;
+  font-size: 0.96rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  border-radius: 999px;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .btn-primary:hover,
 .nav-cta:hover {
-  background: linear-gradient(135deg, #4f7ea8, #3f6b95);
+  background: linear-gradient(135deg, #5f93c2, #446f95);
+  box-shadow: 0 14px 28px rgba(20, 57, 109, 0.20);
+  transform: translateY(-1px);
 }
 
 .btn-secondary {
@@ -653,10 +666,9 @@ footer {
 
 @media (max-width: 920px) {
   body::before {
-    background-size: min(440px, 72vw);
-    background-position: center 132px;
-    opacity: 0.15;
-  }
+  background: url('assets/logosinfondotp.svg') center 140px / min(420px, 72vw) no-repeat;
+  opacity: 0.11;
+}
 
   .menu-toggle {
     display: inline-flex;
