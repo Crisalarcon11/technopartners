@@ -203,20 +203,18 @@ select {
   box-shadow: 0 10px 24px rgba(20, 57, 109, 0.16);
 }
 .nav-cta {
-  min-height: 46px;
-  padding: 0 24px;
+  min-height: 48px;
+  padding: 0 26px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   line-height: 1;
-  font-size: 0.96rem;
+  font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.01em;
   border-radius: 999px;
   white-space: nowrap;
-  user-select: none;
-  -webkit-user-select: none;
 }
 
 .btn-primary:hover,
